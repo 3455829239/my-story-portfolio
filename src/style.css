@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Orbitron", "Segoe UI", system-ui, sans-serif;
+  --color-game-bg: #0a0a0f;
+  --color-game-panel: #12121a;
+  --color-game-accent: #00f5d4;
+  --color-game-gold: #f5c542;
+  --color-game-danger: #ff3366;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-display);
+  background: var(--color-game-bg);
+  color: #e8e8f0;
+  overflow: hidden;
+}
+.scene-canvas {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
