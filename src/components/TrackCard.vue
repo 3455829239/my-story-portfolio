@@ -14,7 +14,7 @@ defineEmits(['select'])
     :class="[
       track.border,
       track.accent,
-      active ? track.glow : 'hover:scale-[1.02] hover:border-white/30',
+      active ? track.glow : 'hover:scale-[1.02] hover:border-black/60',
     ]"
     :disabled="disabled"
     @click="$emit('select', track)"

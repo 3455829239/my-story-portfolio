@@ -15,7 +15,7 @@ defineEmits(['select'])
 <template>
   <button
     type="button"
-    class="absolute cursor-pointer border-2 border-dashed border-red-500/50 bg-transparent transition-colors hover:bg-red-500/20"
+    class="absolute cursor-pointer border-2 border-dashed border-black bg-transparent transition-colors hover:bg-black/10"
     :style="pctStyle(props)"
     @click="$emit('select')"
   >
