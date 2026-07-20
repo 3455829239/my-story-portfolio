@@ -1,5 +1,5 @@
 <script setup>
-import { pctStyle } from '../data/sceneLayout'
+import { pctStyle } from "../data/sceneLayout";
 
 const props = defineProps({
   label: { type: String, required: true },
@@ -7,9 +7,9 @@ const props = defineProps({
   y: { type: Number, required: true },
   w: { type: Number, required: true },
   h: { type: Number, required: true },
-})
+});
 
-defineEmits(['select'])
+defineEmits(["select"]);
 </script>
 
 <template>

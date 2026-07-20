@@ -59,22 +59,22 @@ function toggleShowAllNotes() {
 function handlePointerMove(e) {
   // If hovering over an element with class "clue-photo-wrapper", keep hoveredId.
   // Otherwise clear hoveredId so notes disappear when pointer moves away.
-  const el = e.target.closest?.('.clue-photo-wrapper')
-  if (!el) hoveredId.value = null
+  const el = e.target.closest?.(".clue-photo-wrapper");
+  if (!el) hoveredId.value = null;
 }
 
 // Note-specific style: keep left/width/transform but allow height to auto-size
 // and nudge the top a little to avoid tight overlap with the card.
 function pctStyleNote(layout) {
-  if (!layout) return undefined
-  const base = pctStyle(layout)
+  if (!layout) return undefined;
+  const base = pctStyle(layout);
   // nudge down by 2 percentage points to reduce overlap
-  const topPct = parseFloat(layout.y || 0) + 2
+  const topPct = parseFloat(layout.y || 0) + 2;
   return {
     ...base,
     top: `${topPct}%`,
-    height: 'auto',
-  }
+    height: "auto",
+  };
 }
 </script>
 
@@ -109,9 +109,16 @@ function pctStyleNote(layout) {
 
       <template v-for="noteItem in evidenceItems" :key="`note-${noteItem.id}`">
         <div
-          v-if="noteItem.analysisLayout && (showAllNotes || hoveredId === noteItem.id)"
+          v-if="
+            noteItem.analysisLayout &&
+            (showAllNotes || hoveredId === noteItem.id)
+          "
           class="absolute z-30 w-[270px] rounded-sm bg-[#fbf8ef] p-3 text-xs leading-relaxed text-[#2c2c2c] shadow-[2px_4px_12px_rgba(0,0,0,0.18)] pointer-events-none transition-all duration-300"
-          :style="noteItem.analysisLayout ? pctStyleNote(noteItem.analysisLayout) : undefined"
+          :style="
+            noteItem.analysisLayout
+              ? pctStyleNote(noteItem.analysisLayout)
+              : undefined
+          "
         >
           <!-- 顶部的拟真半透明胶带 -->
           <div
@@ -186,7 +193,7 @@ function pctStyleNote(layout) {
         class="mt-3 rounded border-2 border-black bg-white/90 px-3 py-1.5 text-xs tracking-widest text-[#111] transition hover:border-black/60 hover:bg-[#f3f0e4]"
         @click="toggleShowAllNotes"
       >
-        {{ showAllNotes ? '隐藏所有便利贴' : '显示所有便利贴' }}
+        {{ showAllNotes ? "隐藏所有便利贴" : "显示所有便利贴" }}
       </button>
       <p class="mt-3 text-[10px] tracking-[0.35em] text-zinc-500">
         {{ currentTrack.subtitle }} · EVIDENCE MAPPING

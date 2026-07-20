@@ -3,8 +3,8 @@ defineProps({
   track: { type: Object, required: true },
   active: { type: Boolean, default: false },
   disabled: { type: Boolean, default: false },
-})
-defineEmits(['select'])
+});
+defineEmits(["select"]);
 </script>
 
 <template>
@@ -19,7 +19,9 @@ defineEmits(['select'])
     :disabled="disabled"
     @click="$emit('select', track)"
   >
-    <span class="text-[10px] tracking-[0.3em] text-zinc-500">{{ track.subtitle }}</span>
+    <span class="text-[10px] tracking-[0.3em] text-zinc-500">{{
+      track.subtitle
+    }}</span>
     <h2 class="mt-3 text-xl font-semibold text-white">{{ track.label }}</h2>
     <p class="mt-2 text-xs text-zinc-400 group-hover:text-zinc-300">
       进入线索墙 →

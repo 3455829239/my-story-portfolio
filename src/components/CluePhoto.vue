@@ -1,22 +1,22 @@
 <script setup>
-import { ref } from 'vue'
-import { clueCardStyle } from '../data/sceneLayout'
+import { ref } from "vue";
+import { clueCardStyle } from "../data/sceneLayout";
 
 const props = defineProps({
   clue: { type: Object, required: true },
   layout: { type: Object, required: true },
   active: { type: Boolean, default: false },
-})
+});
 
-defineEmits(['hover'])
+defineEmits(["hover"]);
 
 /** 按原图像素自适应，避免拉伸 / 大留白 */
-const aspectRatio = ref(4 / 3)
+const aspectRatio = ref(4 / 3);
 
 function onImgLoad(e) {
-  const { naturalWidth, naturalHeight } = e.target
+  const { naturalWidth, naturalHeight } = e.target;
   if (naturalWidth && naturalHeight) {
-    aspectRatio.value = naturalWidth / naturalHeight
+    aspectRatio.value = naturalWidth / naturalHeight;
   }
 }
 </script>
@@ -25,7 +25,9 @@ function onImgLoad(e) {
   <button
     type="button"
     class="clue-photo-wrapper absolute block cursor-pointer border-0 bg-transparent p-0 text-left outline-none transition duration-300"
-    :class="active ? 'z-50 brightness-110' : 'z-30 hover:z-40 hover:brightness-110'"
+    :class="
+      active ? 'z-50 brightness-110' : 'z-30 hover:z-40 hover:brightness-110'
+    "
     :style="clueCardStyle({ ...layout, aspectRatio })"
     @pointerenter="$emit('hover', clue)"
     @pointerleave="$emit('hover', null)"
@@ -33,7 +35,9 @@ function onImgLoad(e) {
     <!-- 拍立得外框（已改为黑底） -->
     <div
       class="relative w-full overflow-hidden bg-black p-2 pb-8 border-2 border-black shadow-[2px_4px_8px_rgba(0,0,0,0.35)] transition-all duration-200"
-        :class="active ? 'shadow-[0_0_18px_rgba(255,51,102,0.75)] scale-105 z-50' : ''"
+      :class="
+        active ? 'shadow-[0_0_18px_rgba(255,51,102,0.75)] scale-105 z-50' : ''
+      "
     >
       <div class="relative w-full overflow-hidden bg-black">
         <img
@@ -74,7 +78,9 @@ function onImgLoad(e) {
       </div>
 
       <div class="mt-2 px-1">
-        <p class="text-[9px] tracking-widest text-white/60">EVIDENCE #{{ clue.id }}</p>
+        <p class="text-[9px] tracking-widest text-white/60">
+          EVIDENCE #{{ clue.id }}
+        </p>
         <p class="text-[11px] font-semibold text-white">{{ clue.title }}</p>
       </div>
 
