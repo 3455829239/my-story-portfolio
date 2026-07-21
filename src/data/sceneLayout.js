@@ -8,7 +8,13 @@ import headphoneImg from "../assets/images/headphone.png";
 import evidenceRule from "../assets/images/rule.jpg";
 import evidenceWarzone from "../assets/images/war_zone.jpg";
 import evidenceFailed from "../assets/images/failed.jpg";
+import evidenceFailed2 from "../assets/images/failed2.jpg";
+import evidenceFailed4 from "../assets/images/failed4.jpg";
 import evidenceSucceed from "../assets/images/succeed.jpg";
+import evidenceSucceed2 from "../assets/images/succeed2.jpg";
+import evidenceSucceed4 from "../assets/images/succeed4.jpg";
+import evidenceWarning1 from "../assets/images/warning1.jpg";
+import evidenceWarning2 from "../assets/images/warning2.jpg";
 
 export const DESK_ASPECT = 1707 / 1280;
 
@@ -57,19 +63,30 @@ export const deskHotspots = deskItems;
  * 布局：上排 3 张贴紧，下排成功页 + 右侧审美分析卡
  */
 export const cluePositions = [
-  { id: 1, x: 1, y: 4, w: 24, rotate: -3 },
-  { id: 2, x: 30, y: 2, w: 24, rotate: 2 },
-  { id: 3, x: 58, y: 5, w: 24, rotate: -2 },
-  { id: 4, x: 8, y: 60, w: 24, rotate: 2 },
+  // Top editorial row (lean columns for magazine masthead feel)
+  { id: 1, x: 8, y: 6, w: 20, rotate: 0 },
+  { id: 2, x: 32, y: 6, w: 20, rotate: 0 },
+  { id: 3, x: 56, y: 6, w: 20, rotate: 0 },
+  { id: 4, x: 80, y: 6, w: 18, rotate: 0 },
+
+  // Left and right columns (balanced, vertical rhythm)
+  { id: 5, x: 6, y: 28, w: 22, rotate: 0 },
+  { id: 6, x: 76, y: 28, w: 22, rotate: 0 },
+  { id: 7, x: 6, y: 52, w: 22, rotate: 0 },
+  { id: 8, x: 76, y: 52, w: 22, rotate: 0 },
+
+  // Bottom editorial row (anchor the spread)
+  { id: 9, x: 28, y: 74, w: 26, rotate: 0 },
+  { id: 10, x: 52, y: 74, w: 26, rotate: 0 },
 ];
 
 /** 每张图旁边的审美分析卡位置（第 4 张默认常显） */
 export const analysisCardLayouts = [
-  // More compact rectangular sticky notes (w: width%, h: height%)
-  { id: 1, x: 26, y: 12, w: 18, h: 12, rotate: 1 },
-  { id: 2, x: 55, y: 8, w: 18, h: 12, rotate: -1 },
-  { id: 3, x: 84, y: 12, w: 18, h: 12, rotate: 2 },
-  { id: 4, x: 34, y: 72, w: 20, h: 14, rotate: -1 },
+  // Editorial-style note placements: avoid overlapping hero, align to columns
+  { id: 1, x: 30, y: 14, w: 20, h: 12, rotate: 0 },
+  { id: 2, x: 64, y: 14, w: 20, h: 12, rotate: 0 },
+  { id: 3, x: 30, y: 58, w: 20, h: 12, rotate: 0 },
+  { id: 4, x: 64, y: 58, w: 20, h: 12, rotate: 0 },
 ];
 
 export const resumeBookLayout = { x: 70, y: 72, w: 18, h: 14, rotate: -2 };
@@ -120,6 +137,7 @@ const factoryEvidenceList = [
     desc: "超级恶厂 · 开局规则与 CTA",
     src: evidenceRule,
     pinAnalysis: false,
+    spotColor: true,
     analysis: {
       summary:
         "高对比预警色（橙/红/绿）压在深色底上，形成“强制制度”压迫感；MUST READ 与红色警告框抢夺第一视线，再落到橙色主按钮。",
@@ -149,6 +167,7 @@ const factoryEvidenceList = [
     desc: "6×6 格子 · 语义色分区",
     src: evidenceWarzone,
     pinAnalysis: false,
+    spotColor: true,
     analysis: {
       summary:
         "绿/橙/红格子完成规则可视化；中央掷骰弹层打断网格，形成“决策焦点”。图例与方向键把操作语义钉在底部。",
@@ -224,6 +243,86 @@ const factoryEvidenceList = [
       ],
     },
   },
+  // {
+  //   id: 5,
+  //   title: "成功逃离",
+  //   desc: "黑金胜利页面 · 追加证据",
+  //   src: evidenceSucceed4,
+  //   pinAnalysis: false,
+  //   analysis: {
+  //     summary:
+  //       "黑底金字胜利屏增强结案感，可作为证据墙上更正式、情绪更强的“完成证明”。",
+  //     verdict: "证据指向：加强“逃离成功”主题，适合与失败页形成对比。",
+  //     scores: { visual: 82, interaction: 76, technical: 58 },
+  //     annotations: [],
+  //   },
+  // },
+  // {
+  //   id: 6,
+  //   title: "警告提示",
+  //   desc: "红色警示 · 追加失败图",
+  //   src: evidenceFailed4,
+  //   pinAnalysis: false,
+  //   analysis: {
+  //     summary:
+  //       "红黑警告信息强化“突然失败”氛围，可用于补完失败路径中的异常告警。",
+  //     verdict: "证据指向：加强紧迫感，建议与其他证据错开排布。",
+  //     scores: { visual: 79, interaction: 73, technical: 54 },
+  //     annotations: [],
+  //   },
+  // },
+  {
+    id: 7,
+    title: "警告弹窗 A",
+    desc: "警告样式截图",
+    src: evidenceWarning1,
+    pinAnalysis: false,
+    analysis: {
+      summary: "警告对话框样式示例",
+      verdict: "UI 警示样式",
+      scores: { visual: 70, interaction: 60, technical: 40 },
+      annotations: [],
+    },
+  },
+  {
+    id: 8,
+    title: "警告弹窗 B",
+    desc: "警告样式截图（变体）",
+    src: evidenceWarning2,
+    pinAnalysis: false,
+    analysis: {
+      summary: "警告对话框变体",
+      verdict: "UI 警示样式",
+      scores: { visual: 70, interaction: 60, technical: 40 },
+      annotations: [],
+    },
+  },
+  {
+    id: 9,
+    title: "悔过书扫描",
+    desc: "文档类证据（悔过书）",
+    src: evidenceFailed2,
+    pinAnalysis: false,
+    analysis: {
+      summary: "悔过书文档样式",
+      verdict: "叙事文本证据",
+      scores: { visual: 68, interaction: 50, technical: 30 },
+      annotations: [],
+    },
+  },
+  {
+    id: 10,
+    title: "战利账单",
+    desc: "结算账单样式",
+    src: evidenceSucceed2,
+    pinAnalysis: false,
+    analysis: {
+      summary: "账单/结算样式示例",
+      verdict: "信息化展示",
+      scores: { visual: 75, interaction: 60, technical: 45 },
+      annotations: [],
+    },
+  },
 ];
 
 export const clueEvidence = {
@@ -231,6 +330,36 @@ export const clueEvidence = {
   ops: factoryEvidenceList,
   indie: factoryEvidenceList,
 };
+
+export const additionalEvidence = [
+  {
+    id: 5,
+    title: "逃离截图",
+    desc: "胜利画面 · 逃离成功",
+    src: evidenceSucceed4,
+    pinAnalysis: false,
+    analysis: {
+      summary:
+        "极简胜利页面，黑底金字强化结案仪式感，适合作为证据墙上的“成功归档”。",
+      verdict: "证据指向：视觉冲击强，建议与失败页形成对比对照。",
+      scores: { visual: 84, interaction: 78, technical: 60 },
+      annotations: [],
+    },
+  },
+  {
+    id: 6,
+    title: "警告报表",
+    desc: "红色警示 · 触发失败反馈",
+    src: evidenceFailed4,
+    pinAnalysis: false,
+    analysis: {
+      summary: "红黑警示布局传达“加班失败”警戒感，可作为失败证据链的补充节点。",
+      verdict: "证据指向：加强叙事氛围，但需与其他卡片错位排布避免重复。",
+      scores: { visual: 80, interaction: 72, technical: 55 },
+      annotations: [],
+    },
+  },
+];
 
 export const decorItems = [
   {
@@ -300,10 +429,5 @@ export function getCluePins() {
 }
 
 export function getEvidenceItems(trackId) {
-  const list = clueEvidence[trackId] ?? clueEvidence.cs;
-  return list.map((ev, index) => ({
-    ...ev,
-    layout: cluePositions[index] ?? cluePositions[0],
-    analysisLayout: analysisCardLayouts[index] ?? analysisCardLayouts[0],
-  }));
+  return clueEvidence[trackId] ?? clueEvidence.cs
 }
