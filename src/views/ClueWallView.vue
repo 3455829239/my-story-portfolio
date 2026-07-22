@@ -2,6 +2,7 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import CluePhoto from '../components/CluePhoto.vue'
+import FlashlightGuide from '../components/FlashlightGuide.vue'
 import { getEvidenceItems } from '../data/sceneLayout'
 import { TRACKS } from '../data/tracks'
 import failed3Img from '../assets/images/failed3.jpg'
@@ -67,6 +68,7 @@ function onClueSelect(clue) {
 
 <template>
   <div class="clue-desk h-full overflow-auto text-[#2c2822]">
+    <FlashlightGuide />
     <div class="paper-stage mx-auto w-full max-w-[1680px] px-3 py-4 md:px-5">
       <div class="mb-3 flex items-center justify-between">
         <button
@@ -125,6 +127,7 @@ function onClueSelect(clue) {
             <div class="left-zone-main">
               <article
                 v-if="warMap"
+                data-guide="map"
                 class="border border-zinc-800 bg-transparent"
                 :class="selectedId === warMap.id ? 'outline outline-2 outline-zinc-500' : ''"
               >
@@ -223,6 +226,7 @@ function onClueSelect(clue) {
           <div class="bottom-pair col-span-6">
             <article
               v-if="ruleBook"
+              data-guide="rule"
               class="border border-zinc-800 bg-transparent"
               :class="selectedId === ruleBook.id ? 'outline outline-2 outline-zinc-500' : ''"
             >
@@ -294,6 +298,7 @@ function onClueSelect(clue) {
 
           <article
             v-if="failDoc"
+            data-guide="fail"
             class="col-span-4 w-full min-w-0 border border-[#3a3530] bg-transparent"
             :class="selectedId === failDoc.id ? 'outline outline-2 outline-zinc-500' : ''"
           >
@@ -309,6 +314,7 @@ function onClueSelect(clue) {
 
           <article
             v-if="lootBill"
+            data-guide="win"
             class="col-span-2 w-full min-w-0 border border-[#3a3530] bg-transparent"
             :class="selectedId === lootBill.id ? 'outline outline-2 outline-zinc-500' : ''"
           >
@@ -329,6 +335,20 @@ function onClueSelect(clue) {
               <p>页面不是展示，而是“任务流程”</p>
               <p>
                 流程：进入游戏➤选择区域➤执行行动➤触发事件➤结算让户成为参与者。将网页从静态信息展示转化为具有任务目标和反馈机制的体验流程。
+              </p>
+              <p class="mb-1 text-[10px] font-bold tracking-widest text-zinc-500">待改进视觉效果：</p>
+              <p>视觉元素信息密度过高</p>
+              <p>
+                格子,标签,颜色,控制按钮,日志全部抢注意力，用户不知道第一眼应该看哪里。
+              </p>
+              <p>缺少品牌识别符号</p>
+              <p>
+                只知道这是一个游戏 UI但是不知道这是我的作品。
+              </p>
+              <p>Claud风格过强</p>
+              <p>
+                大量黑色矩形容器，几乎所有内容都有外框，阴影，border，padding形成盒子，具有典型AI Dashboard 感。同时缺少空间关系，应该靠留白，字号，排版，层级而非靠很多框区分
+
               </p>
               <p class="mt-2 text-[8px] text-zinc-500">可改：archive · pantry · boss-door</p>
             </aside>
@@ -355,12 +375,19 @@ function onClueSelect(clue) {
             </div>
 
             <aside class="px-1 font-mono text-[9px] leading-relaxed text-zinc-700">
-              <p class="mb-1 text-[8px] font-bold tracking-widest text-zinc-500">FIELD NOTE R</p>
+              <p class="mb-1 text-[8px] font-bold tracking-widest text-zinc-500">1. Visual System 视觉系统</p>
               <p>
-                笔录右栏：两张巡视警告叠放。前卡「你们怎么…」，后卡露出「小张…」。加班延长 30
-                秒。
+                视觉规则：默认黑白 → 用户探索 → 局部恢复颜色，黑白作为默认状态，降低视觉噪音，让所有内容处于“未发现状态”；颜色作为稀缺资源，仅用于强调用户主动发现的信息。作品主题：探索自己、寻找答案、像侦探一样发现线索，所以建立黑白与彩色的视觉状态系统，将颜色作为信息反馈而非装饰元素，通过颜色变化强化用户探索过程。
               </p>
-              <p class="mt-2 text-[8px] text-zinc-500">可改：patrol · overtime +30s</p>
+              <p class="mb-1 text-[8px] font-bold tracking-widest text-zinc-500">2. Information Hierarchy 信息层级</p>
+              <p>
+                初始所有线索隐藏➤用户产生兴趣➤鼠标移动➤发现隐藏信息➤形成探索路径。信息层级靠交互行为控制信息释放，通过渐进式信息展示降低首屏信息压力，将用户浏览行为转化为探索过程。
+              </p>
+              <p class="mb-1 text-[8px] font-bold tracking-widest text-zinc-500">3. Interaction Logic 交互逻辑</p>
+              <p>
+                鼠标移动因为用户想探索，颜色出现因为发现线索。将 Hover 行为设计为探索触发机制，使交互行为承担信息发现功能，而非单纯视觉反馈
+              </p>
+              <p class="mt-2 text-[8px] text-zinc-500">作品展示页面分析</p>
             </aside>
           </div>
         </section>

@@ -4,7 +4,7 @@ import gsap from 'gsap'
 export function useGameTransition() {
   const isTransitioning = ref(false)
 
-  async function playExitToClueWall({ overlayRef, panelRef, onComplete }) {
+  async function playExitToClueWall({ overlayRef, panelRef, onComplete, duration }) {
     if (isTransitioning.value) return
     isTransitioning.value = true
 
@@ -28,7 +28,8 @@ export function useGameTransition() {
 
     tl.to(overlayRef, {
       opacity: 1,
-      duration: panelRef ? 0.45 : 0.55,
+      duration: duration ?? (panelRef ? 0.45 : 0.55),
+      ease: duration ? 'power1.inOut' : 'power3.inOut',
     })
 
     if (panelRef) {

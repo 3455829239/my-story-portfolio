@@ -18,8 +18,15 @@ async function onSelectItem(item) {
   await playExitToClueWall({
     overlayRef: overlayRef.value,
     panelRef: null,
+    duration: item.id === 'photo' ? 1.2 : undefined,
     onComplete: () => {
-      router.push({ name: 'clue-wall', params: { track: item.track } })
+      if (item.id === 'book') {
+        router.push({ name: 'clue-wall', params: { track: item.track } })
+      } else if (item.id === 'computer') {
+        router.push({ name: 'computer' })
+      } else if (item.id === 'photo') {
+        router.push({ name: 'photo-board' })
+      }
     },
   })
 }
